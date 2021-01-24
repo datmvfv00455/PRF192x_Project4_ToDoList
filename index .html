@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <title>AngelPrime to-do List</title>
+
+    <link rel="stylesheet" href="lib/Bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/jQuery/jquery.ui.min.css" />
+    <link rel="stylesheet" href="assets/todo.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="well">
+
+    <div class="container">
+        <div class="row text-center">
+            <div id="header"> To Do List </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="task-list task-container" id="pending">
+                            <!--Tác vụ đang chờ xử lý-->
+                            <h3>Pending</h3>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <!--Tác vụ đang xử lý-->
+                        <div class="task-list task-container" id="inProgress">
+                            <h3>In Progress</h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                        <!--Tác vụ đã xử lý xong-->
+                        <div class="task-list task-container" id="completed">
+                            <h3>Completed</h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                        <!--Bảng danh sách tác vụ-->
+                        <div class="task-list">
+
+                            <!--Thêm tác vụ-->
+                            <h3>Add a task</h3>
+                            <form id="todo-form">
+                                <input type="text" placeholder="Title" />
+                                <textarea placeholder="Description"></textarea>
+                                <input type="text" id="datepicker" placeholder="Due Date (dd/mm/yyyy)" />
+                                <input type="button" class="btn btn-primary" value="Add Task" onclick="todo.add();" />
+                            </form>
+
+                            <!--Xóa toàn bộ tác vụ-->
+                            <input type="button" class="btn btn-primary" value="Clear Data" onclick="todo.clear();" />
+
+                            <!--Kéo vào khung để xóa tác vụ-->
+                            <div id="delete-div">
+                                Drag Here to Delete
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div style="clear:both;"></div>
+        <script type="text/javascript" src="lib/jQuery/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/Bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="lib/jQuery/jquery.ui.min.js"></script>
+        <script type="text/javascript" src="assets/todo.js"></script>
+
+        <script type="text/javascript">
+            $("#datepicker").datepicker();
+            $("#datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
+
+            $(".task-container").droppable();
+            $(".todo-task").draggable({
+                revert: "valid",
+                revertDuration: 200
+            });
+            todo.init();
+        </script>
+    </div>
+
+</body>
+
+</html>
